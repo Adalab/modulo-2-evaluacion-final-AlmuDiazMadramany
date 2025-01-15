@@ -10,16 +10,61 @@
 body{
     background-color: black;
 }
+
+// ESTILO FORMULARIO BUSQUEDA
+
+header{
+    text-align: center; 
+    font-family: "Oswald", serif;
+}
 .title_animesearch{
     color: white
 }
+.form_search{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    gap: 20px; 
+    padding: 20px;
+}
+.input_search{
+    max-width: 400px; 
+    padding: 10px 15px; 
+    font-size: 16px; 
+    border: 2px solid #ffffff; 
+    border-radius: 5px; 
+}
+
+.button_search{
+    background-color: #ff6f61; 
+    color: #fff; 
+    border: none;
+    border-radius: 5px; 
+    padding: 3px 24px;
+    font-family: "Oswald", serif;
+    font-size: 20px; 
+    font-weight: bold; 
+}
+
+.button_reset{
+    background-color: #1087f0; 
+    color: #fff; 
+    border: none;
+    border-radius: 5px; 
+    padding: 3px 24px;
+    font-family: "Oswald", serif;
+    font-size: 20px; 
+    font-weight: bold; 
+}
+
+// ESTILO PARTE SERIES
 .series{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
     margin: 20px;
 }
-
 // ESTILOS FAVORTIAS
 .series_fav{
     border: 5px solid rgb(214, 132, 151);
@@ -30,10 +75,14 @@ body{
 
     &_title{
         color: rgb(214, 132, 151);
+        font-family: "Oswald", serif;
         text-align: center;
         padding: 10px;
     }
-
+}
+.favs_container{
+    display:flex;
+    flex-direction: row;
 }
 
 .card_favorites{
@@ -72,6 +121,7 @@ body{
         color:rgb(206, 232, 235);
         text-align: center;
         padding: 10px;
+        font-family: "Oswald", serif;
     }
 }
 
