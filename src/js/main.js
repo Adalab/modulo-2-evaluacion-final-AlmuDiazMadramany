@@ -15,6 +15,15 @@ let searchedSeries = [];
 let favoriteSeries =[];
 
 
+// PARTE 4 LOCALSTORAGE. Recuperamos favoritos al cargar la página:
+function getFavoritesFromLS(){
+const savedFavorites = localStorage.getItem("favoriteSeries");
+if (savedFavorites) {
+    favoriteSeries = JSON.parse(savedFavorites);
+    paintCardsFavorites();
+}
+}
+
 // PASO 1: BUSQUEDA: escuchamos en el boton de search y creamos su función 
 
 function handleSearh (ev){
@@ -132,11 +141,15 @@ function handleFavorites (ev){
     }
     // PARTE 3, actualizamos la propiedad isSelectec en cada caso para que se pinten con el estilo selectedCard
 
-  // Llamamos a la función de resultados para que se mantengan los resultados de la busqueda:
-  paintCardsResults (searchedSeries);
 
-  // Llamamos a la función de favortias para mostrar las favoritas: 
-  paintCardsFavorites();
+    // PARTE 4 LOCALSTORAGE. Almacenamos los datos en el localStorage. Lo hacemos aqui porque es cuando una serie se ha seleccionado como favorita: 
+    localStorage.setItem("favoriteSeries", JSON.stringify(favoriteSeries));
+
+    // Llamamos a la función de resultados para que se mantengan los resultados de la busqueda:
+    paintCardsResults (searchedSeries);
+
+    // Llamamos a la función de favortias para mostrar las favoritas: 
+    paintCardsFavorites();
 }
 
 
@@ -156,3 +169,5 @@ function addEventListenerstoCards (){
 // Escuhamos el boton de buscar
 searchBtn.addEventListener ("click", handleSearh)
 
+// PARTE 4 LOCAL STORAGE: llamamos ala función que descarga los datos de localStorage para que se cargen los favoritos
+getFavoritesFromLS();
