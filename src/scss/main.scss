@@ -6,3 +6,66 @@
 @import 'layout/header';
 @import 'layout/footer';
 @import 'pages/index';*/
+
+body{
+    background-color: black;
+}
+.title_animesearch{
+    color: white
+}
+.series{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 20px;
+}
+
+.series_fav{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+
+    &_title{
+        background-color: black;
+        color: white;
+        padding: 5px;
+    }
+
+}
+
+.series_results{
+    border: 5px solid rgb(206, 232, 235);
+    border-radius: 20px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    
+
+    &_title{
+        color:rgb(206, 232, 235);
+        text-align: center;
+    }
+}
+
+.card {
+    padding: 16px;
+    margin: 16px;
+    width: 200px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+.card-img {
+    max-width: 100%;
+    height: auto;
+ 
+}
+.card-title {
+    font-size: 18px;
+    margin-top: 8px;
+    color: #9d9d9d;
+}
+
+.hidden{
+    display: none;
+}
