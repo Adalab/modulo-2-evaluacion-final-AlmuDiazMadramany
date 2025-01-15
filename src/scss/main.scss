@@ -20,19 +20,46 @@ body{
     margin: 20px;
 }
 
+// ESTILOS FAVORTIAS
 .series_fav{
-    border: 1px solid black;
+    border: 5px solid rgb(214, 132, 151);
+    border-radius: 20px;
+    background-color: black;
     display: flex;
     flex-direction: column;
 
     &_title{
-        background-color: black;
-        color: white;
-        padding: 5px;
+        color: rgb(214, 132, 151);
+        text-align: center;
+        padding: 10px;
     }
 
 }
 
+.card_favorites{
+    padding: 16px;
+    margin: 16px;
+    width: 200px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.card_img_favorites{
+    max-width: 100%;
+    height: auto;
+ 
+}
+.card_title_favorites{
+    font-size: 18px;
+    margin-top: 8px;
+    color: #9d9d9d;
+}
+
+
+
+
+// ESTILOS RESULTADOS
 .series_results{
     border: 5px solid rgb(206, 232, 235);
     border-radius: 20px;
@@ -44,6 +71,7 @@ body{
     &_title{
         color:rgb(206, 232, 235);
         text-align: center;
+        padding: 10px;
     }
 }
 
@@ -55,12 +83,12 @@ body{
     display: inline-block;
     vertical-align: top;
 }
-.card-img {
+.card_img {
     max-width: 100%;
     height: auto;
  
 }
-.card-title {
+.card_title {
     font-size: 18px;
     margin-top: 8px;
     color: #9d9d9d;
