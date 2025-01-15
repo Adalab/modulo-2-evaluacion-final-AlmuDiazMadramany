@@ -99,6 +99,7 @@ function paintCardsResults (series) {
 
 }
 
+
 // Funcion para pintar las tarjetas de las series en series favoritas: 
 function paintCardsFavorites (){
     //Vaciamos el contenedor antes de pintar
@@ -110,11 +111,35 @@ function paintCardsFavorites (){
       <div class="card_favorites" id=${serie.id}>
         <img class="card_img_favorites" src="${serie.urlImage}" alt="${serie.title}"/>
         <h3 class="card_title_favorites">${serie.title}</h3>
+        <button class="delete_btn js_delete_fav_btn" data-id="${serie.id}">X</button>
       </div>`;
     }
     // eliminamos la clase hidden para que nos aparezcan los favoritos
     favoritesAll.classList.remove("hidden");
 
+    // BONUS X: añadimos la función para manejar la X:
+    deleteButtonClick();
+
+}
+
+function handleDeleteFavoriteBtn (ev){
+    const favoriteId = parseInt(ev.currentTarget.dataset.id);
+
+    //Eliminamos la serie del array de favoritos
+    favoriteSeries = favoriteSeries.filter((serie) => serie.id!== favoriteId);
+
+    // Se actualiza el localStorage
+    localStorage.setItem ("favoriteSeries", JSON.stringify(favoriteSeries));
+
+    // Pintamos los favoritos
+    paintCardsFavorites();
+}
+
+function deleteButtonClick (){
+    const deleteButtons = document.querySelectorAll (".js_delete_fav_btn");
+    for (const button of deleteButtons) {
+        button.addEventListener("click", handleDeleteFavoriteBtn);        
+    }
 }
 
 
@@ -151,7 +176,6 @@ function handleFavorites (ev){
     // Llamamos a la función de favortias para mostrar las favoritas: 
     paintCardsFavorites();
 }
-
 
 
 //Creamos una función para añadir lo eventos de "click" sobre las tarjetas que ya aparecen en las busquedas: 

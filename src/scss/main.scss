@@ -80,6 +80,8 @@ header{
         padding: 10px;
     }
 }
+
+
 .favs_container{
     display:flex;
     flex-direction: row;
@@ -156,4 +158,14 @@ header{
 
 .selectedTitle {
     color: rgb(214, 132, 151);
+}
+
+.delete_btn{
+    background-color: rgb(214, 132, 151);
+    border: none;
+    border-radius: 50%; 
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+   
 }
