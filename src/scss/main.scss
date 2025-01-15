@@ -144,6 +144,16 @@ header{
     color: #9d9d9d;
 }
 
+
+// CLASES EXTRAS
 .hidden{
     display: none;
+}
+
+.selectedCard{
+    border: 5px solid rgb(214, 132, 151);
+}
+
+.selectedTitle {
+    color: rgb(214, 132, 151);
 }

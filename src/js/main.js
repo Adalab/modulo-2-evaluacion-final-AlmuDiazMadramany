@@ -46,13 +46,15 @@ function handleSearh (ev){
             const id = serie.mal_id;
 
             // creamos el array con los datos que hemos sacado con push: 
-            searchedSeries.push ({ urlImage, title, id });
+            searchedSeries.push ({ urlImage, title, id, isSelected:false});
+            // PARTE 3 FAVORITOS: hemos añadido una propoedad is Selected a cada obejto cuando se añade al array, para poder rastrear la tarjeta seleccionada. 
         }
 
         // llamamos a la función para que se pinten las series en resultados:
         paintCardsResults (searchedSeries)
     })
 }
+
 
 // Función para pintar las tarjetas de las series en resultados:
 function paintCardsResults (series) {
@@ -61,10 +63,14 @@ function paintCardsResults (series) {
 
     // recorremos el array de series con un bucle y pintamos el HTML de cada tarjeta
     for (const serie of series) {
+
+        // creamos una constante para la propiedad is selected, si es true añade la clase selectedCard, si no, no hace nada. Hacemos lo mismo con el titulo
+        const selectedClass = serie.isSelected ? "selectedCard" : "" ; 
+        const selectedTitle = serie.isSelected ? "selectedTitle" : "";
         const serieCard =`
-        <div class="card" id="${serie.id}">
+        <div class="card ${selectedClass}" id="${serie.id}">
                 <img class="card_img" src="${serie.urlImage}" alt="${serie.title}"/>
-                <h3 class="card_title">${serie.title}</h3>
+                <h3 class="card_title ${selectedTitle}">${serie.title}</h3>
             </div>
         `;
         // Añadimos el id al contenedor de la tarjeta entero, id= para que se clicke en toda la tarjeta
@@ -79,7 +85,7 @@ function paintCardsResults (series) {
     // PARTE 2: FAVORITOS 
     // Añadimos un evento click a cada tarjeta cuando se marque como favorita
 
-    addEventListenerstoCards ();
+         addEventListenerstoCards ();
     
 
 }
@@ -107,19 +113,24 @@ function paintCardsFavorites (){
 function handleFavorites (ev){
     // recogemos el id de la serie click
     const clickSerieId = parseInt (ev.currentTarget.id);
+
     // Comparamos ids para identificar la serie seleccionada
     const clickSerie =searchedSeries.find((serie)=> serie.id === clickSerieId);
-
+    
     // Comprobamos si la serie ya está en favoritos con FINDINDEX que busca en el indice el primer id que cumpla la condición de ser igal que el id de la serie clickada
     const favoriteIndex = favoriteSeries.findIndex((serie)=> serie.id ===clickSerieId);
 
-    // si no está, la añadimos a favoritos con PUSH para añadirlo al array 
-     // si está, la eliminamos de favoritos con SPLICE para eliminarlo del array para que no se duplique: 
+    // si no está, la añadimos a favoritos con PUSH para añadirlo al array / PARTE 3 FAVORITOS: añadimos la clase seleccionada. 
+     // si está, la eliminamos de favoritos con SPLICE para eliminarlo del array para que no se duplique.
     if (favoriteIndex === -1){
         favoriteSeries.push (clickSerie);
+        clickSerie.isSelected = true;
+        
     }else{
         favoriteSeries.splice (favoriteIndex,1);
+        clickSerie.isSelected = false;
     }
+    // PARTE 3, actualizamos la propiedad isSelectec en cada caso para que se pinten con el estilo selectedCard
 
   // Llamamos a la función de resultados para que se mantengan los resultados de la busqueda:
   paintCardsResults (searchedSeries);
@@ -127,6 +138,8 @@ function handleFavorites (ev){
   // Llamamos a la función de favortias para mostrar las favoritas: 
   paintCardsFavorites();
 }
+
+
 
 //Creamos una función para añadir lo eventos de "click" sobre las tarjetas que ya aparecen en las busquedas: 
 function addEventListenerstoCards (){
