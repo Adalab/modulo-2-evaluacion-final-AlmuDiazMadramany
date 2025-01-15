@@ -3,10 +3,11 @@
 const searchBtn = document.querySelector (".js_seacrh_btn");
 const input = document.querySelector (".js-inputsearch");
 const resultsContainer = document.querySelector (".js_series_results_container");
+const resultsAll = document.querySelector (".js_results_all");
 
 // Constantes para FAVORITOS
 const favoritesContainer = document.querySelector (".js_series_favs_container");
-
+const favoritesAll = document.querySelector (".js_favs_all");
 // Array para almacenar las series buscadas: 
 let searchedSeries = [];
 
@@ -52,6 +53,7 @@ function handleSearh (ev){
         paintCardsResults (searchedSeries)
     })
 }
+
 // Función para pintar las tarjetas de las series en resultados:
 function paintCardsResults (series) {
     // Vaciamos el contenedor antes de pintar
@@ -71,10 +73,14 @@ function paintCardsResults (series) {
         resultsContainer.innerHTML += serieCard
     }
 
+    // Eliminamos la clase de hidden para que aparezca:
+        resultsAll.classList.remove("hidden");
+
     // PARTE 2: FAVORITOS 
     // Añadimos un evento click a cada tarjeta cuando se marque como favorita
 
     addEventListenerstoCards ();
+    
 
 }
 
@@ -91,6 +97,8 @@ function paintCardsFavorites (){
         <h3 class="card_title_favorites">${serie.title}</h3>
       </div>`;
     }
+    // eliminamos la clase hidden para que nos aparezcan los favoritos
+    favoritesAll.classList.remove("hidden");
 
 }
 
