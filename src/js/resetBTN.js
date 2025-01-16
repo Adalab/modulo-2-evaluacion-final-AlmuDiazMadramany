@@ -16,7 +16,11 @@ function handleResetBtn(){
     favoritesContainer.innerHTML="";
 
     // Borramos todo lo que se haya guardado en el localStorage
-    localStorage.removeItem("favoriteSeries")
+    localStorage.removeItem("favoriteSeries");
+
+    // vovlemos a darle la clase hidden a las dos secciones para que desaparezcan: 
+    resultsAll.classList.add("hidden");
+    favoritesAll.classList.add("hidden");
 }
 
 // Escuchamos el boton de reset

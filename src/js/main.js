@@ -1,4 +1,7 @@
 'use strict';
+
+import "./resetBTN.js";
+
 // Constantes para BUSQUEDA
 const searchBtn = document.querySelector (".js_seacrh_btn");
 const input = document.querySelector (".js-inputsearch");
@@ -195,3 +198,6 @@ searchBtn.addEventListener ("click", handleSearh)
 
 // PARTE 4 LOCAL STORAGE: llamamos ala función que descarga los datos de localStorage para que se cargen los favoritos
 getFavoritesFromLS();
+
+
+
