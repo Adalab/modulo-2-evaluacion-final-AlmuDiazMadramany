@@ -11,6 +11,7 @@ const resultsAll = document.querySelector (".js_results_all");
 // Constantes para FAVORITOS
 const favoritesContainer = document.querySelector (".js_series_favs_container");
 const favoritesAll = document.querySelector (".js_favs_all");
+
 // Array para almacenar las series buscadas: 
 let searchedSeries = [];
 
@@ -133,6 +134,7 @@ function paintCardsFavorites (){
     deleteButtonClick();
 }
 
+
 // Funcion para las series favoritas
 function handleFavorites (ev){
     // recogemos el id de la serie click
@@ -180,7 +182,12 @@ function handleDeleteFavoriteBtn (ev){
     // Pintamos los favoritos
     paintCardsFavorites();
 
-    //
+    // función para actualizar el estilo de la serie seleccionada si se ha quitado de favoritos: 
+    const clikedSerie =searchedSeries.find((serie) => serie.id === favoriteId);
+    if (clikedSerie) {
+        clikedSerie.isSelected=false;
+        paintCardsResults (searchedSeries);
+    }
 }
 
 
@@ -206,6 +213,7 @@ function addEventListenerstoCards (){
 
 // Escuhamos el boton de buscar
 searchBtn.addEventListener ("click", handleSearh)
+
 
 // PARTE 4 LOCAL STORAGE: llamamos ala función que descarga los datos de localStorage para que se cargen los favoritos
 getFavoritesFromLS();
