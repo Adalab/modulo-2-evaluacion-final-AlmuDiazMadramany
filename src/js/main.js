@@ -119,29 +119,7 @@ function paintCardsFavorites (){
 
     // BONUS X: añadimos la función para manejar la X:
     deleteButtonClick();
-
 }
-
-function handleDeleteFavoriteBtn (ev){
-    const favoriteId = parseInt(ev.currentTarget.dataset.id);
-
-    //Eliminamos la serie del array de favoritos
-    favoriteSeries = favoriteSeries.filter((serie) => serie.id!== favoriteId);
-
-    // Se actualiza el localStorage
-    localStorage.setItem ("favoriteSeries", JSON.stringify(favoriteSeries));
-
-    // Pintamos los favoritos
-    paintCardsFavorites();
-}
-
-function deleteButtonClick (){
-    const deleteButtons = document.querySelectorAll (".js_delete_fav_btn");
-    for (const button of deleteButtons) {
-        button.addEventListener("click", handleDeleteFavoriteBtn);        
-    }
-}
-
 
 // Funcion para las series favoritas
 function handleFavorites (ev){
@@ -175,6 +153,28 @@ function handleFavorites (ev){
 
     // Llamamos a la función de favortias para mostrar las favoritas: 
     paintCardsFavorites();
+}
+
+
+function handleDeleteFavoriteBtn (ev){
+    const favoriteId = parseInt(ev.currentTarget.dataset.id);
+
+    //Eliminamos la serie del array de favoritos
+    favoriteSeries = favoriteSeries.filter((serie) => serie.id!== favoriteId);
+
+    // Se actualiza el localStorage
+    localStorage.setItem ("favoriteSeries", JSON.stringify(favoriteSeries));
+
+    // Pintamos los favoritos
+    paintCardsFavorites();
+}
+
+
+function deleteButtonClick (){
+    const deleteButtons = document.querySelectorAll (".js_delete_fav_btn");
+    for (const button of deleteButtons) {
+        button.addEventListener("click", handleDeleteFavoriteBtn);        
+    }
 }
 
 
