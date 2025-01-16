@@ -1,2 +1,12 @@
-console.log(">> Ready :)");
+const h=document.querySelector(".js_reset_btn");function g(){c=[],i=[],u.value="",a.innerHTML="",l.innerHTML="",localStorage.removeItem("favoriteSeries"),v.classList.add("hidden"),o.classList.add("hidden")}h.addEventListener("click",g);const p=document.querySelector(".js_seacrh_btn"),u=document.querySelector(".js-inputsearch"),a=document.querySelector(".js_series_results_container"),v=document.querySelector(".js_results_all"),l=document.querySelector(".js_series_favs_container"),o=document.querySelector(".js_favs_all");let c=[],i=[];function L(){const e=localStorage.getItem("favoriteSeries");e&&(i=JSON.parse(e),f())}function I(e){e.preventDefault();const t=u.value;fetch(`https://api.jikan.moe/v4/anime?q=${t}`).then(s=>s.json()).then(s=>{const n=s.data;c=[];for(const r of n){const m=r.images.jpg.image_url==="https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png"?"https://placehold.co/600x400/ffffff/66666/?text=TV":r.images.jpg.image_url,S=r.title,_=r.mal_id;c.push({urlImage:m,title:S,id:_,isSelected:!1})}d(c)})}function d(e){a.innerHTML="";for(const t of e){const s=t.isSelected?"selectedCard":"",n=t.isSelected?"selectedTitle":"",r=`
+        <div class="card ${s}" id="${t.id}">
+                <img class="card_img" src="${t.urlImage}" alt="${t.title}"/>
+                <h3 class="card_title ${n}">${t.title}</h3>
+            </div>
+        `;a.innerHTML+=r}v.classList.remove("hidden"),T()}function f(){if(l.innerHTML="",i.length===0)o.classList.add("hidden");else{for(const e of i)l.innerHTML+=`
+            <div class="card_favorites" id=${e.id}>
+                <img class="card_img_favorites" src="${e.urlImage}" alt="${e.title}"/>
+                <h3 class="card_title_favorites">${e.title}</h3>
+                <button class="delete_btn js_delete_fav_btn" data-id="${e.id}">X</button>
+            </div>`;o.classList.remove("hidden")}$()}function j(e){const t=parseInt(e.currentTarget.id),s=c.find(r=>r.id===t),n=i.findIndex(r=>r.id===t);n===-1?(i.push(s),s.isSelected=!0):(i.splice(n,1),s.isSelected=!1),localStorage.setItem("favoriteSeries",JSON.stringify(i)),d(c),f()}function y(e){const t=parseInt(e.currentTarget.dataset.id);i=i.filter(n=>n.id!==t),localStorage.setItem("favoriteSeries",JSON.stringify(i)),f();const s=c.find(n=>n.id===t);s&&(s.isSelected=!1,d(c))}function $(){const e=document.querySelectorAll(".js_delete_fav_btn");for(const t of e)t.addEventListener("click",y)}function T(){const e=document.querySelectorAll(".card");for(const t of e)t.addEventListener("click",j)}p.addEventListener("click",I);L();
 //# sourceMappingURL=main.js.map
