@@ -1,5 +1,5 @@
 # MÓDULO 2 | EVALUACIÓN FINAL 
-Este es el proyecto final del Módulo 1 en el que hemos trabajado con javaScript
+Este es el proyecto final del Módulo 2 en el que hemos trabajado con javaScript
 ## Tabla de Contenidos
 - [Instalación](#instalación)
 - [Trabajo](#trabajo)
