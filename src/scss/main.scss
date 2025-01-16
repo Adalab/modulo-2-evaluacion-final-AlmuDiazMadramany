@@ -18,7 +18,15 @@ header{
     font-family: "Oswald", serif;
 }
 .title_animesearch{
-    color: white
+    color: white;
+}
+
+.subtitle_animesearch{
+    color: white;
+    font-family: "Oswald", serif;
+    font-weight: 100;
+    text-align: center; 
+
 }
 .form_search{
     display: flex; 
@@ -27,6 +35,7 @@ header{
     justify-content: center;
     gap: 20px; 
     padding: 20px;
+    font-family: "Oswald", serif;
 }
 .input_search{
     max-width: 400px; 
@@ -34,6 +43,7 @@ header{
     font-size: 16px; 
     border: 2px solid #ffffff; 
     border-radius: 5px; 
+    font-family: "Oswald", serif;
 }
 
 .button_search{
@@ -64,6 +74,7 @@ header{
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     margin: 20px;
+    font-family: "Oswald", serif;
 }
 // ESTILOS FAVORTIAS
 .series_fav{
@@ -85,6 +96,7 @@ header{
 .favs_container{
     display:flex;
     flex-direction: row;
+    font-family: "Oswald", serif;
 }
 
 .card_favorites{
@@ -94,6 +106,7 @@ header{
     text-align: center;
     display: inline-block;
     vertical-align: top;
+    font-family: "Oswald", serif;
 }
 
 .card_img_favorites{
@@ -105,6 +118,7 @@ header{
     font-size: 18px;
     margin-top: 8px;
     color: #9d9d9d;
+    font-family: "Oswald", serif;
 }
 
 
@@ -117,6 +131,7 @@ header{
     background-color: black;
     display: flex;
     flex-direction: column;
+    font-family: "Oswald", serif;
     
 
     &_title{
@@ -134,6 +149,7 @@ header{
     text-align: center;
     display: inline-block;
     vertical-align: top;
+    font-family: "Oswald", serif;
 }
 .card_img {
     max-width: 100%;
@@ -144,6 +160,7 @@ header{
     font-size: 18px;
     margin-top: 8px;
     color: #9d9d9d;
+    font-family: "Oswald", serif;
 }
 
 
@@ -158,6 +175,7 @@ header{
 
 .selectedTitle {
     color: rgb(214, 132, 151);
+    font-family: "Oswald", serif;
 }
 
 .delete_btn{
