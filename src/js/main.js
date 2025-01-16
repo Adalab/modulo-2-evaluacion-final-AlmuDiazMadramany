@@ -50,7 +50,7 @@ function handleSearh (ev){
             // cuando en imagen viene la dirección, ponemos nuestra propia imagen. recorremos el array y usamos operador ternario: 
             const urlImage =
             serie.images.jpg.image_url === "https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png"
-            ? "https://placehold.co/600x400"
+            ? "https://placehold.co/600x400/ffffff/66666/?text=TV"
             :serie.images.jpg.image_url;
 
              // los otros dos datos que nos interesan: titulo y id
@@ -179,6 +179,8 @@ function handleDeleteFavoriteBtn (ev){
 
     // Pintamos los favoritos
     paintCardsFavorites();
+
+    //
 }
 
 
