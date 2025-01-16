@@ -107,18 +107,27 @@ function paintCardsResults (series) {
 function paintCardsFavorites (){
     //Vaciamos el contenedor antes de pintar
     favoritesContainer.innerHTML="";
-    
-    //recorremos el array de las series favortias y lo pintamos en el HTML
-    for (const serie of favoriteSeries) {
+
+    // Condicional para que, si no hay favoritos (el array sea igual a 0) se añada la clase hidden al espacio de favoritos. Y si no, en el momento que haya favoritos se pinte y se añadan:
+    if (favoriteSeries.length === 0){
+        favoritesAll.classList.add("hidden");    
+    }else {
+
+         //recorremos el array de las series favortias y lo pintamos en el HTML
+        for (const serie of favoriteSeries) {
         favoritesContainer.innerHTML +=`
-      <div class="card_favorites" id=${serie.id}>
-        <img class="card_img_favorites" src="${serie.urlImage}" alt="${serie.title}"/>
-        <h3 class="card_title_favorites">${serie.title}</h3>
-        <button class="delete_btn js_delete_fav_btn" data-id="${serie.id}">X</button>
-      </div>`;
+            <div class="card_favorites" id=${serie.id}>
+                <img class="card_img_favorites" src="${serie.urlImage}" alt="${serie.title}"/>
+                <h3 class="card_title_favorites">${serie.title}</h3>
+                <button class="delete_btn js_delete_fav_btn" data-id="${serie.id}">X</button>
+            </div>`;
+        }
+        // eliminamos la clase hidden para que nos aparezcan los favoritos
+        favoritesAll.classList.remove("hidden");
     }
-    // eliminamos la clase hidden para que nos aparezcan los favoritos
-    favoritesAll.classList.remove("hidden");
+
+
+   
 
     // BONUS X: añadimos la función para manejar la X:
     deleteButtonClick();
