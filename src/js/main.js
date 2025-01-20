@@ -12,6 +12,8 @@ const resultsAll = document.querySelector (".js_results_all");
 const favoritesContainer = document.querySelector (".js_series_favs_container");
 const favoritesAll = document.querySelector (".js_favs_all");
 
+const logBtn = document.querySelector (".js_log_btn");
+
 // Array para almacenar las series buscadas: 
 let searchedSeries = [];
 
@@ -57,9 +59,11 @@ function handleSearh (ev){
              // los otros dos datos que nos interesan: titulo y id
             const title = serie.title;
             const id = serie.mal_id;
+            const type = serie.type;
+
 
             // creamos el array con los datos que hemos sacado con push: 
-            searchedSeries.push ({ urlImage, title, id, isSelected:false});
+            searchedSeries.push ({ urlImage, title, type, id, isSelected:false});
             // PARTE 3 FAVORITOS: hemos añadido una propoedad is Selected a cada obejto cuando se añade al array, para poder rastrear la tarjeta seleccionada. 
         }
 
@@ -84,6 +88,7 @@ function paintCardsResults (series) {
         <div class="card ${selectedClass}" id="${serie.id}">
                 <img class="card_img" src="${serie.urlImage}" alt="${serie.title}"/>
                 <h3 class="card_title ${selectedTitle}">${serie.title}</h3>
+                <h3 class="card_type">${serie.type}</h3>
             </div>
         `;
         // Añadimos el id al contenedor de la tarjeta entero, id= para que se clicke en toda la tarjeta
@@ -214,6 +219,15 @@ function addEventListenerstoCards (){
 // Escuhamos el boton de buscar
 searchBtn.addEventListener ("click", handleSearh)
 
+function handleLogbtn (ev){
+    ev.preventDefault();
+    for (const favSerie of favoriteSeries) {
+        console.log (favSerie.title);
+    }
+    
+}
+
+logBtn.addEventListener ("click", handleLogbtn);
 
 // PARTE 4 LOCAL STORAGE: llamamos ala función que descarga los datos de localStorage para que se cargen los favoritos
 getFavoritesFromLS();

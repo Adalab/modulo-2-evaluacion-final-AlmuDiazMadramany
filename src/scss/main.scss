@@ -57,6 +57,17 @@ header{
     font-weight: bold; 
 }
 
+
+.button_log {
+    background-color: green; 
+    color: #fff; 
+    border: none;
+    border-radius: 5px; 
+    padding: 3px 24px;
+    font-family: "Oswald", serif;
+    font-size: 20px; 
+    font-weight: bold; 
+}
 .button_reset{
     background-color: #1087f0; 
     color: #fff; 
@@ -162,7 +173,12 @@ header{
     color: #9d9d9d;
     font-family: "Oswald", serif;
 }
-
+.card_type{
+    font-size: 18px;
+    margin-top: 8px;
+    color: #9d9d9d;
+    font-family: "Oswald", serif;
+}
 
 // CLASES EXTRAS
 .hidden{
